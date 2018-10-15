@@ -6,9 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/buttonNotify"
-        android:text="Show Notification"
+    <TextView
+        android:id="@+id/textViewToken"
         android:textAllCaps="false"
         android:layout_centerInParent="true"
         android:layout_width="wrap_content"
