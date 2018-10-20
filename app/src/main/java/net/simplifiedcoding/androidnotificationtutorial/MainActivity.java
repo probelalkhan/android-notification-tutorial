@@ -64,20 +64,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-        FirebaseInstanceId.getInstance().getInstanceId()
-                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
-                        if (task.isSuccessful()) {
-                            String token = task.getResult().getToken();
-
-                        } else {
-
-                        }
-                    }
-                });
-
     }
 
     private void createUser() {
@@ -110,10 +96,10 @@ public class MainActivity extends AppCompatActivity {
 
                         if (task.isSuccessful()) {
                             startProfileActivity();
-                        }else{
-                            if(task.getException() instanceof FirebaseAuthUserCollisionException){
+                        } else {
+                            if (task.getException() instanceof FirebaseAuthUserCollisionException) {
                                 userLogin(email, password);
-                            }else{
+                            } else {
                                 progressBar.setVisibility(View.INVISIBLE);
                                 Toast.makeText(MainActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                             }
@@ -123,20 +109,28 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-    private void userLogin(String email, String password){
+    private void userLogin(String email, String password) {
 
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             startProfileActivity();
-                        }else{
+                        } else {
                             progressBar.setVisibility(View.INVISIBLE);
                             Toast.makeText(MainActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }
                     }
                 });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (mAuth.getCurrentUser() != null) {
+            startProfileActivity();
+        }
     }
 
     private void startProfileActivity() {
