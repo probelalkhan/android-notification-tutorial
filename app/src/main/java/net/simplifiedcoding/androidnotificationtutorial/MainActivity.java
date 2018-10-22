@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     //2. Notification Builder
     //3. Notification Manager
 
-    private static final String CHANNEL_ID = "simplified_coding";
+    public static final String CHANNEL_ID = "simplified_coding";
     private static final String CHANNEL_NAME = "Simplified Coding";
     private static final String CHANNEL_DESC = "Simplified Coding Notifications";
 
@@ -139,17 +139,5 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void displayNotification() {
 
-        NotificationCompat.Builder mBuilder =
-                new NotificationCompat.Builder(this, CHANNEL_ID)
-                        .setSmallIcon(R.drawable.ic_notification)
-                        .setContentTitle("Hurray! It is working...")
-                        .setContentText("Your first notification..")
-                        .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-
-        NotificationManagerCompat mNotificationMgr = NotificationManagerCompat.from(this);
-        mNotificationMgr.notify(1, mBuilder.build());
-
-    }
 }
