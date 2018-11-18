@@ -25,6 +25,7 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+//        NotificationHelper.displayNotification(this, "title", "body");
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -42,7 +43,9 @@ public class ProfileActivity extends AppCompatActivity {
                         }
                     }
                 });
+
     }
+
 
     @Override
     protected void onStart() {
@@ -66,7 +69,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
-                    Toast.makeText(ProfileActivity.this, "Token Saved", Toast.LENGTH_LONG).show();
+//                    Toast.makeText(ProfileActivity.this, "Token Saved", Toast.LENGTH_LONG).show();
                 }
             }
         });
