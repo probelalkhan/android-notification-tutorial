@@ -23,6 +23,10 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Arrays;
+
 public class MainActivity extends AppCompatActivity {
 
     //1. Notification Channel
@@ -138,6 +142,5 @@ public class MainActivity extends AppCompatActivity {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
-
 
 }
