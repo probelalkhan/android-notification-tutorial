@@ -1,6 +1,7 @@
 package net.simplifiedcoding.androidnotificationtutorial;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -46,6 +47,16 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
             super(itemView);
 
             textViewEmail = itemView.findViewById(R.id.textViewEmail);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    User user = userList.get(getAdapterPosition());
+                    Intent intent = new Intent(context, SendNotificationActivity.class);
+                    intent.putExtra("user", user);
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }
